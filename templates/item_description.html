@@ -1,0 +1,25 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+
+<h1> Catalog APP </h1>
+
+
+
+<h2> {{item.name}} </h2>
+<p> {{item.description}} </p> </br></br>
+
+<a href='{{url_for('editItem', itemCategory=item.itemCategory, item=item.name ) }}'>Edit</a> 
+<a href='{{url_for('deleteItem', itemCategory=item.itemCategory, item=item.name ) }}'>Delete</a>
+
+
+
+
+</body>
+
+</html>

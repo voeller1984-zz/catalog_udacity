@@ -1,0 +1,26 @@
+<html>
+
+<body>
+
+<h1> Edit Item </h1>
+
+<form action='{{url_for('editItem', itemCategory = itemCategory, item=item )}} ' method="POST"> 
+<p>Title: </p>
+<input type="text" name="new_name" placeholder="{{item.name}}"> </br></br>
+
+<p>Description: </p>
+<textarea name="new_description" cols="30" rows="5"> {{item.description}} </textarea> </br></br>
+
+<p>Category: </p>
+<select name="new_category">
+{%for i in catalogs %}
+	<option value="{{i.name}}">{{i.name}}</option>	
+{% endfor %}
+</select>
+<input type="submit" name="Edit">
+</form>
+
+
+</body>
+
+</html>

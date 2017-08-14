@@ -1,0 +1,41 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+
+<h1>Catalog APP</h1>
+
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li> <strong> {{message}}</strong></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endwith %}
+</br>
+
+<div class="catalog">
+	<div class="category">
+		<h4>Categories</h4>
+		{% for i in catalogs %}
+		<p><a href="/catalog/{{i.name}}/items/">{{i.name}}</a></p>
+		{% endfor %}
+	</div>
+	</br></br>
+	<div>
+		<h4>Latest Items</h4>
+		{% for k in items %}
+		<p><a href="/catalog/{{k.itemCategory}}/{{k.name}}/">{{k.name}}</a> <span style="font-size:x-small;">({{k.itemCategory}})</span></p>
+		{% endfor %}
+	</div>
+</div>
+</body>
+
+</html>
