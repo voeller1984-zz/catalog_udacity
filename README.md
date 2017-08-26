@@ -8,7 +8,7 @@ Authentication is handled by Facebook OAuth. User can only edit or delete items 
 
 ## Prerequisites
 
-Requires Python, pip, and git.
+Requires Python, and git.
 
 ## How to Install
 
@@ -16,8 +16,8 @@ To download and install this program, you will need git installed.
 
 At the command line, enter:
 
-git clone https://github.com/alanriddle/fs_proj3_item_catalog.git
-Change directory to fs_proj3_item_catalog.
+git clone https://github.com/voeller1984/catalog_udacity.git
+Change directory to catalog_udacity.git
 
 ## How to Use Facebook Oauth Login
 please visit: https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
@@ -28,13 +28,15 @@ please visit: https://developers.facebook.com/docs/facebook-login/manually-build
 
 ## How to Initialize Database and Load Initial Categories
 
-To initialize the SQLite database (create empty tables) enter
+To initialize the SQLite database enter
 
 python db/database_setup.py
+
+
 To load the initial sporting good categories enter
 
 python db/lots_of_menus.py
-populate DB with initial dummies
+
 
 ## Starting Application
 
