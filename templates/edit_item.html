@@ -1,10 +1,14 @@
 <html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css') }}">
 
+</head>
 <body>
-
+{% include "header.html" %}
 <h1> Edit Item </h1>
 
-<form action='{{url_for('editItem', itemCategory = itemCategory, item=item )}} ' method="POST"> 
+<form action='{{url_for('editItem', itemCategory = itemCategory, item=item.name )}} ' method="POST"> 
 <p>Title: </p>
 <input type="text" name="new_name" placeholder="{{item.name}}"> </br></br>
 
@@ -14,7 +18,12 @@
 <p>Category: </p>
 <select name="new_category">
 {%for i in catalogs %}
-	<option value="{{i.name}}">{{i.name}}</option>	
+	{% if i.name|string() == itemCategory|string() %}
+		<option value="{{i.name}}" selected="">{{i.name}}</option>
+	{% else %}
+		<option value="{{i.name}}">{{i.name}}</option>	
+	{% endif %}
+
 {% endfor %}
 </select>
 <input type="submit" name="Edit">

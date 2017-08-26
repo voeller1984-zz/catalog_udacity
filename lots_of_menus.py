@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Category, Base, Item
+from database_setup import Category, Base, Item, User
 
 engine = create_engine('sqlite:///restaurantmenu.db')
 # Bind the engine to the metadata of the Base class so that the
@@ -25,6 +25,14 @@ session.query(Item).delete()
 # Delete Users if exisitng.
 #session.query(User).delete()
 
+#items for fake users
+user1 = User(name="testUser", email="autobot@blabla.com")
+user2 = User(name="anotherTest", email="another@mail.com")
+
+session.add(user1)
+session.add(user2)
+session.commit()
+
 
 
 # Items for cat Soccer
@@ -33,20 +41,20 @@ category1 = Category(name="Soccer")
 session.add(category1)
 session.commit()
 
-Item2 = Item(name="ShinGuards", category=category1, description="Juicy grilled veggie patty with tomato mayo and lettuce")
+Item2 = Item(name="ShinGuards", category=category1, description="Juicy grilled veggie patty with tomato mayo and lettuce", user=user1)
 
 session.add(Item2)
 session.commit()
 
 
 Item3 = Item(name="Jersey", description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                     category=category1)
+                     category=category1, user = user1)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(name="Soccer Cleats", description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-                     category=category1)
+                     category=category1, user = user1)
 
 session.add(Item4)
 session.commit()
@@ -61,20 +69,20 @@ session.add(category2)
 session.commit()
 
 Item2 = Item(name="Bat", description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo",
-                     category=category2)
+                     category=category2, user = user1)
 
 session.add(Item2)
 session.commit()
 
 
 Item3 = Item(name="Baseball Jersey", description="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-                     category=category2)
+                     category=category2, user = user2)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(name="helmet", description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
-                     category=category2)
+                     category=category2, user = user2)
 
 session.add(Item4)
 session.commit()
@@ -88,20 +96,20 @@ session.add(category3)
 session.commit()
 
 Item2 = Item(name="Snowboard", description="Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat",
-                     category=category3)
+                     category=category3, user = user1)
 
 session.add(Item2)
 session.commit()
 
 
 Item3 = Item(name="Jacket", description="so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will",
-                     category=category3)
+                     category=category3, user = user2)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(name="Googles", description="On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment",
-                     category=category3)
+                     category=category3, user = user1)
 
 session.add(Item4)
 session.commit()
@@ -115,20 +123,20 @@ session.add(category3)
 session.commit()
 
 Item2 = Item(name="Skate", description="description skate",
-                     category=category4)
+                     category=category4, user = user1)
 
 session.add(Item2)
 session.commit()
 
 
 Item3 = Item(name="Shoes", description="description shoes for skating",
-                     category=category4)
+                     category=category4, user = user1)
 
 session.add(Item3)
 session.commit()
 
 Item4 = Item(name="Cool shirt", description="description shirt for skating",
-                     category=category4)
+                     category=category4, user = user2)
 
 session.add(Item4)
 session.commit()

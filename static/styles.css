@@ -1,6 +1,8 @@
 body            { 
 	font-family: 'Droid Serif', serif;
 	background-color: #333333; 
+	margin-left: 50px;
+    margin-top: 20px;
 }
  h1, h2, h3, h4       { color: #CCCCCC; }
 
@@ -8,10 +10,18 @@ body            {
 h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.2em; }
 
+ul {	color: cadetblue; }
+
 p               { color: #CCCCCC;}
 
 a {text-decoration: none; color:#FFFFCC; font-size: .75em;}
 
+
+.row.top-menu {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+}
 
 .catalog {
 	display: flex;
@@ -20,4 +30,8 @@ a {text-decoration: none; color:#FFFFCC; font-size: .75em;}
 
 .category{
 	width: 150px;
+}
+
+.column-bla {
+    width: 80%;
 }

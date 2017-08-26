@@ -7,10 +7,10 @@
 
 
 <body>
-
+{% include "header.html" %}
 <h1> Delete Item </h1>
 
-<form action='{{url_for('deleteItem', itemCategory = itemCategory, item=item )}} ' method="POST"> 
+<form action="{{url_for('deleteItem', itemCategory = itemCategory, item=item )}}" method='POST'> 
 <p>Delete Item: {{item.name}} </p>
 
 <p>Are you sure you want to delete? </p>
@@ -19,7 +19,7 @@
 <input type="submit" name="delete">
 </form>
 
-<a href='{{url_for('showItemDescription', itemCategory= item.itemCategory, item=item.name ) }}'>Cancel - Go Back</a>
+<a href="{{url_for('showItemDescription', itemCategory= item.itemCategory, item=item.name ) }}">Cancel - Go Back</a>
 
 </body>
 

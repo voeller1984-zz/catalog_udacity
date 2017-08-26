@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+{% include "header.html" %}
 <h1>Catalog APP</h1>
 
 
@@ -32,8 +32,10 @@
 <div>
 	<h4>{{item_category}} Items ({{items.count()}} Items)</h4>
 	{% for k in items %}
-	<p><a href="#">{{k.name}}</a></p>
+	<p><a href="/catalog/{{k.itemCategory}}/{{k.name}}/">{{k.name}}</a></p>
 	{% endfor %}
+	<br/>
+	<p><a   style="color: cyan;" href="{{url_for('add_item', itemCategory=item_category) }}">Add {{item_category}} Item</a></p>
 </div>
 </div>
 </body>

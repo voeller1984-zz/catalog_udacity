@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+{% include "header.html" %}
+<h1> Add Item </h1>
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li> <strong> {{message}}</strong></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endwith %}
+</br>
+
+<form action='{{url_for('add_item', itemCategory = item_obj.itemCategory )}} ' method="POST"> 
+<p>Title: </p>
+<input type="text" name="new_name" placeholder="{{name}}"></br></br>
+
+<p>Description: </p>
+<textarea name="new_description" cols="30" rows="5" placeholder="{{description}}"></textarea> </br></br>
+
+<p>Category: {{item_obj.itemCategory}}</p>
+
+<input type="submit" name="Edit">
+<a href="{{url_for('showItems', itemCategory=item_obj.itemCategory ) }}">Cancel - Go Back</a>
+</form>
+
+
+</body>
+
+</html>

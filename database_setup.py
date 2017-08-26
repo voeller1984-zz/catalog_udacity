@@ -9,6 +9,23 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    email = Column(String(250), nullable=False)
+    picture = Column(String(250))
+
+    @property
+    def serialize(self):
+        return{
+            'name'      : self.name,
+            'email'     : self.email, 
+            'picture'   : self.picture, 
+            'id'        : self.id,
+        }
+
+
 class Category(Base):
     __tablename__ = 'category'
     
@@ -23,6 +40,8 @@ class Item(Base):
     description = Column(String(2000))
     time = Column(DateTime, server_default=func.now())
     category = relationship(Category)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable = False)
+    user = relationship(User)
     
 
 # serialize function to be able to send JSON objects in a
