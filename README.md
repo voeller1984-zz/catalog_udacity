@@ -61,21 +61,27 @@ sudo apt-get upgrade
 
 
 ### Create new user
+
 sudo adduser bob --disabled --password
 connect to bob account: `sudo su - bob` 
 mkdir .ssh
 chmod 700 .ssh
 create a directory for all authorized keys: `touch .ssh/authorized_keys`
 limit access to directory: chmod 600 .ssh/authorized_keys`
+
 make new ssh -key in AWS lightsail console
 download private key and install on local server (e.g. udacity_grader2.pem)
+
 copy pubblic key into .ssh/authorized_keys:
 	`sudo su - bob`
 	`cat >> .ssh/authorized_keys`
+
 from MacOS connect as bob:
 	`ssh bob@18.194.205.178 -i udacity_grader2.pem`
 
+
 ### change SSH port to 2200
+
 change to root user: `sudo su -`
 update ssh port in config file:	`nano /etc/ssh/ssh_config`
 restart service	`service ssh restart`
@@ -83,10 +89,13 @@ restart service	`service ssh restart`
 *Note: for lightsail users, make sure additional Firewall setting under Networking allows SSH connection on port 2200*
 
 ### configure UFW
-`sudo ufw allow 2200/tcp`
-`sudo ufw allow 80/tcp`
-`sudo ufw allow 123/udp`
-`sudo ufw enable`
+
+```
+sudo ufw allow 2200/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 123/udp
+sudo ufw enable
+```
 
 *Note: from now on you will connect using ssh -p2200*
 example: `ssh ubuntu@18.194.205.178 -i udacity.pem -p2200`
@@ -103,16 +112,21 @@ example: `ssh ubuntu@18.194.205.178 -i udacity.pem -p2200`
 
 
 ### Install & Configure PSQL
+
 `sudo apt-get -H install postgre sql`
+
 create DB user called catalog
-`sudo su - postgres`
-`psql`
-`CREATE DATABASE catalog;`
-`CREATE USER catalog;`
-`ALTER ROLE catalog WITH PASSWORD `foo`; `
-`GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;`
+```sudo su - postgres
+psql
+CREATE DATABASE catalog;
+CREATE USER catalog;
+ALTER ROLE catalog WITH PASSWORD `foo`; 
+GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
+```
+
 quit postgreSQL: `⁄q`
 exit from psql: `exit`
+
 
 ### install GIT
 `sudo apt-get install git`
