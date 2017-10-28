@@ -126,19 +126,24 @@ exit from psql: `exit`
 `sudo a2enmod wsgi`
 
 #### wsgi content
-```import sys
+```
+import sys
 import logging
 sys.path.insert(0, "/var/www/FlaskApp/")
 
-from catalogUdacity import app as application ```
+from catalogUdacity import app as application 
+```
 
 ### configure and enable virtual Host
 configure: `sudo nano /etc/apache2/sites-available/xxx.conf`
 enable: `sudo a2ensite FlaskApp`
 
 #### configuration file structure
-*Note: make sure git directory and childrens are not accessible from client*
-```<VirtualHost *>
+
+Note: make sure git directory and childrens are not accessible from client
+
+```
+<VirtualHost *>
         ServerName 18.194.205.178
         WSGIDaemonProcess FlaskApp
         WSGIScriptAlias /  /var/www/FlaskApp/myapp.wsgi
@@ -152,7 +157,8 @@ enable: `sudo a2ensite FlaskApp`
                 Order deny,allow
                 Deny from all
         </Directorymatch>
-</VirtualHost>```
+</VirtualHost>
+```
 
 
 #### Flask App structure
