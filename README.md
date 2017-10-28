@@ -198,7 +198,8 @@ Note: make sure git directory and childrens are not accessible from client
 	│       ├── login.html
 	│       └── specific_category.html
 	└── myapp.wsgi
-	```
+```
+
 
 #### restart Apache
 
