@@ -1,5 +1,7 @@
 ## Item Catalog Project
 
+Inline `code` has `back-ticks around` it.
+
 This repository includes Udacity project unit 5: Linux Server Configuration
 
 A user of this project can add, edit, and delete items belonging to a particular category.
