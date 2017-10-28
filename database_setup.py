@@ -13,7 +13,7 @@ class User(Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
-    email = Column(String(250), nullable=False)
+    email = Column(String(250))
     picture = Column(String(250))
 
     @property
@@ -55,7 +55,7 @@ class Item(Base):
             'category': self.itemCategory,
         }
 
-engine = create_engine('sqlite:///restaurantmenu.db')
+engine = create_engine('postgresql://catalog:serginho@localhost/catalog')
 
 
 Base.metadata.create_all(engine)

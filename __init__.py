@@ -16,7 +16,7 @@ import requests
 
 app = Flask(__name__)
 
-engine = create_engine('sqlite:///restaurantmenu.db')
+engine = create_engine('postgresql://catalog:serginho@localhost/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -42,10 +42,10 @@ def fbconnect():
     access_token = request.data
     print "access token received %s " % access_token
 
-    app_id = json.loads(open('fb_client_secrets.json', 'r').read())[
+    app_id = json.loads(open('/var/www/FlaskApp/catalogUdacity/fb_client_secrets.json', 'r').read())[
         'web']['app_id']
     app_secret = json.loads(
-        open('fb_client_secrets.json', 'r').read())['web']['app_secret']
+        open('/var/www/FlaskApp/catalogUdacity/fb_client_secrets.json', 'r').read())['web']['app_secret']
     url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (
         app_id, app_secret, access_token)
     h = httplib2.Http()
@@ -70,9 +70,9 @@ def fbconnect():
     # print "API JSON result: %s" % result
     data = json.loads(result)
     login_session['provider'] = 'facebook'
-    login_session['username'] = data["name"]
-    login_session['email'] = data["email"]
-    login_session['facebook_id'] = data["id"]
+    login_session['username'] = data.get('name')
+    login_session['email'] = data.get('email')
+    login_session['facebook_id'] = data.get('id')
 
     # The token must be stored in the login_session in order to properly logout
     login_session['access_token'] = token
@@ -297,8 +297,8 @@ def catalogJSON():
     items = session.query(Item).all()
     return jsonify(Catalog=[i.serialize for i in items])
 
+app.secret_key = 'blabla2r24rwger3536tfsdr2345'
 
 if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
