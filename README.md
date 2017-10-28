@@ -111,7 +111,7 @@ example: `ssh ubuntu@18.194.205.178 -i udacity.pem -p2200`
 *Note: -H is only required to install packages on route directory and not only for a specific user*
 
 ### set automatic ubuntu upgrades
-´sudo apt install unattended-upgrades´
+`sudo apt install unattended-upgrades`
 
 ### Install & Configure PSQL
 
@@ -221,5 +221,6 @@ Note: make sure git directory and childrens are not accessible from client
 
 #### 3rd party resources and tutorials used
 
-Udacity discussion Forum: (thank you @ swooding) : https://discussions.udacity.com/t/helloworld-application-for-flask/399384
+Udacity discussion Forum: (thank you @swooding) : https://discussions.udacity.com/t/helloworld-application-for-flask/399384
+
 Digital ocean tutorial: https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
