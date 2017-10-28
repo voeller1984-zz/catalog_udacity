@@ -93,15 +93,15 @@ example: 'ssh ubuntu@18.194.205.178 -i udacity.pem -p2200'
 'sudo dpkg-reconfigure tzdata'
 
 ### Install Apache
-'sugo apt-get install Apache2'
-'sudo apt-get -H install python libapache2-mod-wsgi'
-'sudo service apache2 restart'
+'''sugo apt-get install Apache2
+sudo apt-get -H install python libapache2-mod-wsgi
+sudo service apache2 restart'''
 
 *Note: -H is only required to install packages on route directory and not only for a specific user*
 
 
 ### Install & Configure PSQL
-'sudo apt-get -H install postgre sql'
+´sudo apt-get -H install postgre sql´
 create DB user called catalog
 'sudo su - postgres'
 'psql'
